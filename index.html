@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pure Fitness — Strength, Recovery & Body Care</title>
+  <style>
+    :root {
+      --bg: #0c1317;
+      --surface: #142027;
+      --surface-2: #1b2b34;
+      --text: #f3f7f9;
+      --muted: #9fb2bc;
+      --accent: #2dd4bf;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px 16px 64px;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .welcome {
+      background: linear-gradient(135deg, #132a2e, var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+    }
+
+    .welcome h1 {
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+    }
+
+    .product-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .product-top h2 {
+      font-size: 1.35rem;
+    }
+
+    .price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .product-desc {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 0.96rem;
+    }
+
+    .benefits-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .benefits {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .benefits li {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.92rem;
+    }
+
+    .benefits li strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .btn {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(45, 212, 191, 0.25);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06201d;
+    }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      margin-top: 10px;
+    }
+
+    .panel {
+      display: none;
+      background: var(--surface-2);
+      border: 1px solid rgba(45, 212, 191, 0.4);
+      border-radius: 18px;
+      padding: 22px 18px;
+      margin-top: 18px;
+    }
+
+    .panel h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .account-box {
+      display: none;
+      background: var(--bg);
+      border: 1px dashed var(--accent);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    .account-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 0.93rem;
+    }
+
+    .account-row span {
+      color: var(--muted);
+    }
+
+    .confirm-box {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">Pure Fitness</div>
+      <div class="tag">Performance & Body Recovery</div>
+    </header>
+
+    <section class="welcome">
+      <h1>Welcome to Pure Fitness</h1>
+      <p>
+        Train harder, recover smarter, and support your body every day with clean fitness essentials built for real results.
+      </p>
+    </section>
+
+    <section class="product-card">
+      <div class="product-top">
+        <h2>Pure Fitness Recovery & Electrolytes Formula</h2>
+        <div class="price">₦18,500</div>
+      </div>
+      <p class="product-desc">
+        Designed for active bodies, this daily blend replenishes essential minerals and supports muscle repair after workouts, long shifts, or demanding days.
+      </p>
+
+      <div class="benefits-title">How It Benefits Your Body:</div>
+      <ul class="benefits">
+        <li>
+          <strong>Faster Muscle Recovery</strong>
+          Helps ease post-workout soreness and supports tissue repair so you are ready for your next session.
+        </li>
+        <li>
+          <strong>Optimal Hydration & Cramp Support</strong>
+          Restores key electrolytes lost through sweat to help prevent fatigue and muscle tightness.
+        </li>
+        <li>
+          <strong>Sustained Stamina</strong>
+          Supports steady physical energy during training and busy routines without a harsh crash.
+        </li>
+        <li>
+          <strong>Better Rest & Recharge</strong>
+          Helps calm the body after activity so you sleep deeper and wake up refreshed.
+        </li>
+      </ul>
+
+      <button id="order-now-btn" type="button" class="btn btn-primary">Order Now</button>
+
+      <div id="order-panel" class="panel">
+        <h3>Complete Your Order</h3>
+
+        <div class="field">
+          <label for="customer-name">Your Full Name</label>
+          <input id="customer-name" type="text" placeholder="e.g. Tunde Adeyemi" />
+        </div>
+
+        <div class="field">
+          <label for="customer-phone">Phone / WhatsApp Number</label>
+          <input id="customer-phone" type="tel" placeholder="e.g. 08012345678" />
+        </div>
+
+        <div class="field">
+          <label for="customer-address">Delivery Address</label>
+          <input id="customer-address" type="text" placeholder="Street, area, city" />
+        </div>
+
+        <div class="field">
+          <label for="qty">Quantity</label>
+          <select id="qty">
+            <option value="1" selected>1 Pack — ₦18,500</option>
+            <option value="2">2 Packs — ₦37,000</option>
+            <option value="3">3 Packs — ₦55,500</option>
+          </select>
+        </div>
+
+        <button id="pay-btn" type="button" class="btn btn-primary">Proceed to Payment</button>
+
+        <div id="account-box" class="account-box">
+          <div class="account-row"><span>Bank Name:</span><strong>GTBank (Guaranty Trust Bank)</strong></div>
+          <div class="account-row"><span>Account Number:</span><strong id="acct-num">0150581423</strong></div>
+          <div class="account-row"><span>Account Name:</span><strong>Pure Fitness</strong></div>
+          <div class="account-row"><span>Amount to Transfer:</span><strong id="amount-due">₦18,500</strong></div>
+          <button id="copy-btn" type="button" class="btn btn-secondary">Copy Account Number</button>
+
+          <div id="confirm-box" class="confirm-box">
+            <p class="note" style="margin-top:0; margin-bottom:10px;">
+              Once you have completed the transfer, tap below to send your order & payment confirmation:
+            </p>
+            <button id="sent-btn" type="button" class="btn btn-primary">I Have Sent Payment — Send Confirmation</button>
+            <p class="note" id="status-msg"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      const UNIT_PRICE = 18500;
+      const WHATSAPP_NUMBER = "2348103157383";
+      const ORDER_EMAIL = "dentidirs@gmail.com";
+
+      const orderBtn = document.getElementById("order-now-btn");
+      const orderPanel = document.getElementById("order-panel");
+      const qtySelect = document.getElementById("qty");
+      const payBtn = document.getElementById("pay-btn");
+      const accountBox = document.getElementById("account-box");
+      const confirmBox = document.getElementById("confirm-box");
+      const copyBtn = document.getElementById("copy-btn");
+      const sentBtn = document.getElementById("sent-btn");
+
+      function formatNaira(amount) {
+        return "₦" + amount.toLocaleString("en-NG");
+      }
+
+      function updateTotal() {
+        const qty = Number(qtySelect.value) || 1;
+        document.getElementById("amount-due").textContent = formatNaira(qty * UNIT_PRICE);
+      }
+
+      function revealOrderPanel() {
+        orderPanel.style.setProperty("display", "block", "important");
+        orderPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      orderBtn.addEventListener("click", revealOrderPanel);
+      orderBtn.addEventListener("touchend", function (e) {
+        e.preventDefault();
+        revealOrderPanel();
+      }, { passive: false });
+
+      qtySelect.addEventListener("change", updateTotal);
+
+      function sendOrderEmail(stageLabel) {
+        const name = document.getElementById("customer-name").value.trim();
+        const phone = document.getElementById("customer-phone").value.trim();
+        const address = document.getElementById("customer-address").value.trim();
+        const qty = Number(qtySelect.value) || 1;
+        const total = formatNaira(qty * UNIT_PRICE);
+
+        fetch("https://formsubmit.co/ajax/" + ORDER_EMAIL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            _subject: "Pure Fitness Client Order (" + stageLabel + ") - " + name,
+            Customer_Name: name,
+            Customer_Phone: phone,
+            Delivery_Address: address,
+            Product: "Pure Fitness Recovery & Electrolytes Formula",
+            Quantity: qty,
+            Total_Amount: total,
+            Stage: stageLabel
+          })
+        }).catch(function () {
+          // Keep checkout flowing even if background request encounters a network issue
+        });
+      }
+
+      payBtn.addEventListener("click", function () {
+        const name = document.getElementById("customer-name").value.trim();
+        const phone = document.getElementById("customer-phone").value.trim();
+        const address = document.getElementById("customer-address").value.trim();
+
+        if (!name || !phone || !address) {
+          alert("Please fill in your name, phone number, and delivery address first.");
+          return;
+        }
+
+        updateTotal();
+        sendOrderEmail("Proceeded to Payment");
+        accountBox.style.setProperty("display", "block", "important");
+        confirmBox.style.setProperty("display", "block", "important");
+        accountBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+
+      copyBtn.addEventListener("click", function () {
+        const acct = document.getElementById("acct-num").textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(acct).then(function () {
+            alert("Account number copied: " + acct);
+          }).catch(function () {
+            alert("Account number: " + acct);
+          });
+        } else {
+          alert("Account number: " + acct);
+        }
+      });
+
+      sentBtn.addEventListener("click", function () {
+        const name = document.getElementById("customer-name").value.trim();
+        const phone = document.getElementById("customer-phone").value.trim();
+        const address = document.getElementById("customer-address").value.trim();
+        const qty = Number(qtySelect.value) || 1;
+        const total = formatNaira(qty * UNIT_PRICE);
+
+        sendOrderEmail("Payment Sent");
+
+        const message =
+          "Hello Pure Fitness, I have made payment for my order:\n" +
+          "• Product: Pure Fitness Recovery & Electrolytes Formula (x" + qty + ")\n" +
+          "• Total Paid: " + total + "\n" +
+          "• Name: " + name + "\n" +
+          "• Phone: " + phone + "\n" +
+          "• Delivery Address: " + address;
+
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+        document.getElementById("status-msg").textContent =
+          "Client info sent to dentidirs@gmail.com and opening WhatsApp. Please attach your transfer receipt if needed.";
+        window.location.href = url;
+      });
+    })();
+  </script>
+</body>
+</html>
