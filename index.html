@@ -1,446 +1,580 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pure Fitness — Strength, Recovery & Body Care</title>
+  <title>Pure Fitness | Slim Patch Burn-Fat Reduction Pad</title>
   <style>
     :root {
-      --bg: #0c1317;
-      --surface: #142027;
-      --surface-2: #1b2b34;
-      --text: #f3f7f9;
-      --muted: #9fb2bc;
-      --accent: #2dd4bf;
-      --border: rgba(255, 255, 255, 0.1);
+      --bg: #0b1412;
+      --card: #12201d;
+      --card-border: #1f3631;
+      --accent: #2ee59d;
+      --accent-dark: #1fb87c;
+      --text: #f3f7f6;
+      --muted: #a7bab5;
+      --danger: #ff6b6b;
+      --gold: #ffd166;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding: 20px 16px 64px;
+      padding-bottom: 90px;
     }
 
-    .wrap {
-      max-width: 760px;
+    /* Urgency Timer Bar */
+    .timer-bar {
+      background: linear-gradient(90deg, #16332b, #1d473b);
+      border-bottom: 1px solid var(--accent);
+      padding: 12px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .timer-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .countdown {
+      display: inline-flex;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #ffffff;
+    }
+
+    .countdown span {
+      background: rgba(0, 0, 0, 0.45);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(46, 229, 157, 0.35);
+    }
+
+    .container {
+      max-width: 540px;
       margin: 0 auto;
+      padding: 20px 16px;
     }
 
-    header {
+    /* Brand Header */
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 20px;
     }
 
     .brand {
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.3rem;
+      font-weight: 800;
       color: var(--accent);
     }
 
-    .tag {
+    .tagline {
       font-size: 0.8rem;
       color: var(--muted);
     }
 
-    .welcome {
-      background: linear-gradient(135deg, #132a2e, var(--surface));
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px 20px;
-      margin-bottom: 20px;
-    }
-
-    .welcome h1 {
-      font-size: clamp(1.6rem, 5vw, 2.2rem);
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-
-    .welcome p {
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .product-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px 20px;
-      margin-bottom: 20px;
-    }
-
-    .product-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .product-top h2 {
-      font-size: 1.35rem;
-    }
-
-    .price {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .product-desc {
-      color: var(--muted);
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
       margin-bottom: 18px;
-      font-size: 0.96rem;
     }
 
-    .benefits-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .benefits {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .benefits li {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 0.92rem;
-    }
-
-    .benefits li strong {
-      color: var(--accent);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .btn {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 18px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      -webkit-tap-highlight-color: rgba(45, 212, 191, 0.25);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #06201d;
-    }
-
-    .btn-secondary {
-      background: var(--surface-2);
-      color: var(--text);
-      border: 1px solid var(--border);
-      margin-top: 10px;
-    }
-
-    .panel {
-      display: none;
-      background: var(--surface-2);
-      border: 1px solid rgba(45, 212, 191, 0.4);
-      border-radius: 18px;
-      padding: 22px 18px;
-      margin-top: 18px;
-    }
-
-    .panel h3 {
-      font-size: 1.15rem;
-      margin-bottom: 12px;
-    }
-
-    .field {
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 14px;
     }
 
-    .field label {
-      display: block;
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: 6px;
+    .badge {
+      background: rgba(46, 229, 157, 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(46, 229, 157, 0.35);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
     }
 
-    .field input,
-    .field select {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 16px;
+    .badge.gift {
+      background: rgba(255, 209, 102, 0.14);
+      color: var(--gold);
+      border-color: rgba(255, 209, 102, 0.4);
     }
 
-    .account-box {
-      display: none;
-      background: var(--bg);
+    h1 {
+      font-size: 1.65rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .pack-note {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    /* Price Block */
+    .price-box {
+      background: #0d1916;
       border: 1px dashed var(--accent);
-      border-radius: 14px;
-      padding: 16px;
-      margin-top: 16px;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
     }
 
-    .account-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 6px 0;
-      font-size: 0.93rem;
+    .old-price {
+      font-size: 1.05rem;
+      color: var(--danger);
+      text-decoration: line-through;
+      font-weight: 700;
+      display: block;
     }
 
-    .account-row span {
-      color: var(--muted);
+    .new-price {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1.2;
     }
 
-    .confirm-box {
-      display: none;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    .note {
+    .price-sub {
       font-size: 0.85rem;
       color: var(--muted);
-      margin-top: 10px;
+      margin-top: 4px;
+    }
+
+    /* Media Showcase (Photo & Video) */
+    .media-box {
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: #0d1916;
+    }
+
+    .media-box img,
+    .media-box video {
+      width: 100%;
+      display: block;
+      max-height: 420px;
+      object-fit: cover;
+    }
+
+    .media-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 8px 12px;
+      text-align: center;
+      background: #0f1d1a;
+    }
+
+    /* Benefits */
+    .benefit-item {
+      background: #0e1a17;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .benefit-item h3 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .benefit-item p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Bundle Highlights */
+    .bundle-list {
+      list-style: none;
+      margin: 12px 0 16px;
+    }
+
+    .bundle-list li {
+      background: #0e1a17;
+      border: 1px solid var(--card-border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .bundle-list strong {
+      color: var(--accent);
+    }
+
+    /* Buttons */
+    .btn {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: #062117;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-align: center;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: #0b1412;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .delivery-notice {
+      background: rgba(255, 209, 102, 0.1);
+      border: 1px solid rgba(255, 209, 102, 0.4);
+      color: var(--gold);
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* Success State */
+    .success-box {
+      display: none;
+      background: rgba(46, 229, 157, 0.12);
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    .success-box h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+    }
+
+    /* Floating WhatsApp Icon Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+      z-index: 200;
+    }
+
+    .whatsapp-float svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
+
+  <!-- Countdown Promo Banner -->
+  <div class="timer-bar">
+    <span class="timer-label">50% Off Promo + Free Skipping Rope Ends In:</span>
+    <div class="countdown" id="countdown">
+      <span id="hours">02h</span> :
+      <span id="minutes">45m</span> :
+      <span id="seconds">00s</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Brand Bar -->
+    <div class="header">
       <div class="brand">Pure Fitness</div>
-      <div class="tag">Performance & Body Recovery</div>
-    </header>
+      <div class="tagline">Body Slimming & Recovery</div>
+    </div>
 
-    <section class="welcome">
-      <h1>Welcome to Pure Fitness</h1>
-      <p>
-        Train harder, recover smarter, and support your body every day with clean fitness essentials built for real results.
-      </p>
-    </section>
-
-    <section class="product-card">
-      <div class="product-top">
-        <h2>Pure Fitness Recovery & Electrolytes Formula</h2>
-        <div class="price">₦18,500</div>
+    <!-- Hero / Product Card -->
+    <div class="card">
+      <div class="badge-row">
+        <span class="badge">FREE Delivery Nationwide</span>
+        <span class="badge gift">+ FREE Skipping Rope Gift</span>
       </div>
-      <p class="product-desc">
-        Designed for active bodies, this daily blend replenishes essential minerals and supports muscle repair after workouts, long shifts, or demanding days.
+
+      <h1>Fat Reduction Pad (Slim Patch)</h1>
+      <p class="pack-note">Each pack contains 10 herbal slimming pads (10PCS/Bag)</p>
+
+      <div class="price-box">
+        <span class="old-price">Normal Price: ₦30,000</span>
+        <div class="new-price">₦15,000 <span style="font-size: 0.95rem; font-weight: 600; color: #f3f7f6;">/ 1 Pack (10 Pads)</span></div>
+        <div class="price-sub">Includes FREE delivery anywhere + 1 FREE Skipping Rope</div>
+      </div>
+
+      <!-- Product Picture (Upload your photo as product-image.jpg in GitHub) -->
+      <div class="media-box">
+        <img src="product-image.jpg" alt="Slim Patch Burn-Fat Reduction Pad 10PCS Bag" />
+        <div class="media-caption">Slim Patch Burn-Fat Reduction Pad — 10 Pads Per Pack</div>
+      </div>
+
+      <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 16px;">
+        Designed to target stubborn belly, arm, and waist fat effortlessly. Simply apply one herbal moxibustion pad daily to support natural fat breakdown, body toning, and faster slimming results.
       </p>
 
-      <div class="benefits-title">How It Benefits Your Body:</div>
-      <ul class="benefits">
-        <li>
-          <strong>Faster Muscle Recovery</strong>
-          Helps ease post-workout soreness and supports tissue repair so you are ready for your next session.
-        </li>
-        <li>
-          <strong>Optimal Hydration & Cramp Support</strong>
-          Restores key electrolytes lost through sweat to help prevent fatigue and muscle tightness.
-        </li>
-        <li>
-          <strong>Sustained Stamina</strong>
-          Supports steady physical energy during training and busy routines without a harsh crash.
-        </li>
-        <li>
-          <strong>Better Rest & Recharge</strong>
-          Helps calm the body after activity so you sleep deeper and wake up refreshed.
-        </li>
+      <a href="#order-section" class="btn">Claim 50% Discount & Order Now</a>
+    </div>
+
+    <!-- Product Video Showcase (Upload your video as product-video.mp4 in GitHub) -->
+    <div class="card">
+      <h2 style="font-size: 1.2rem; margin-bottom: 10px;">See How It Works</h2>
+      <div class="media-box" style="margin: 0;">
+        <video controls playsinline preload="metadata" poster="product-image.jpg">
+          <source src="product-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="media-caption">Watch quick demonstration & real usage guide</div>
+      </div>
+    </div>
+
+    <!-- Key Benefits -->
+    <div class="card">
+      <h2 style="font-size: 1.2rem; margin-bottom: 12px;">Why Customers Love This Fat Reduction Pad</h2>
+
+      <div class="benefit-item">
+        <h3>Targeted Belly, Waist & Arm Slimming</h3>
+        <p>Works directly on stubborn fat areas around the midsection, arms, and thighs while you go about your day or sleep.</p>
+      </div>
+
+      <div class="benefit-item">
+        <h3>10 Pads Per Pack (10-Day Supply)</h3>
+        <p>Every pack comes sealed with 10 breathable herbal pads that stick comfortably under clothing without mess.</p>
+      </div>
+
+      <div class="benefit-item">
+        <h3>Bonus Free Skipping Rope Included</h3>
+        <p>Accelerate your fat-burning routine with a complimentary skipping rope included with every order.</p>
+      </div>
+    </div>
+
+    <!-- Promo Bundle Pricing -->
+    <div class="card">
+      <h2 style="font-size: 1.2rem; margin-bottom: 6px;">Special Discount Bundles</h2>
+      <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 10px;">
+        Save even more when you order multiple packs today:
+      </p>
+      <ul class="bundle-list">
+        <li><span>1 Pack (10 Pads) + Free Gift</span> <strong>₦15,000</strong></li>
+        <li><span>2 Packs (20 Pads) + Free Gift</span> <strong>₦23,500</strong></li>
+        <li><span>4 Packs (40 Pads) + Free Gift</span> <strong>₦40,000</strong></li>
       </ul>
+      <p style="font-size: 0.85rem; color: var(--accent); font-weight: 600;">
+        All bundles include FREE delivery to any location in Nigeria + 1 FREE Skipping Rope.
+      </p>
+    </div>
 
-      <button id="order-now-btn" type="button" class="btn btn-primary">Order Now</button>
+    <!-- Direct Order Form (Sends Automatically to Email) -->
+    <div class="card" id="order-section">
+      <h2 style="font-size: 1.3rem; margin-bottom: 6px;">Complete Your Order</h2>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 16px;">
+        Fill in your details below and your order will be processed immediately.
+      </p>
 
-      <div id="order-panel" class="panel">
-        <h3>Complete Your Order</h3>
-
-        <div class="field">
-          <label for="customer-name">Your Full Name</label>
-          <input id="customer-name" type="text" placeholder="e.g. Tunde Adeyemi" />
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="customerName">Full Name *</label>
+          <input type="text" id="customerName" name="Customer_Name" placeholder="Enter your full name" required />
         </div>
 
-        <div class="field">
-          <label for="customer-phone">Phone / WhatsApp Number</label>
-          <input id="customer-phone" type="tel" placeholder="e.g. 08012345678" />
+        <div class="form-group">
+          <label for="customerPhone">Phone / WhatsApp Number *</label>
+          <input type="tel" id="customerPhone" name="Customer_Phone" placeholder="e.g. 08012345678" required />
         </div>
 
-        <div class="field">
-          <label for="customer-address">Delivery Address</label>
-          <input id="customer-address" type="text" placeholder="Street, area, city" />
+        <div class="form-group">
+          <label for="altPhone">Alternative Phone Number (Optional)</label>
+          <input type="tel" id="altPhone" name="Alternative_Phone" placeholder="Backup number for delivery rider" />
         </div>
 
-        <div class="field">
-          <label for="qty">Quantity</label>
-          <select id="qty">
-            <option value="1" selected>1 Pack — ₦18,500</option>
-            <option value="2">2 Packs — ₦37,000</option>
-            <option value="3">3 Packs — ₦55,500</option>
+        <div class="form-group">
+          <label for="deliveryAddress">Full Delivery Address & State *</label>
+          <textarea id="deliveryAddress" name="Delivery_Address" rows="3" placeholder="House number, street name, bus stop, city & state" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="packageSelect">Select Your Package *</label>
+          <select id="packageSelect" name="Selected_Package" required>
+            <option value="1 Pack (10 Pads) + Free Skipping Rope — ₦15,000">1 Pack (10 Pads) + Free Skipping Rope — ₦15,000</option>
+            <option value="2 Packs (20 Pads) + Free Skipping Rope — ₦23,500">2 Packs (20 Pads) + Free Skipping Rope — ₦23,500 (Best Seller)</option>
+            <option value="4 Packs (40 Pads) + Free Skipping Rope — ₦40,000">4 Packs (40 Pads) + Free Skipping Rope — ₦40,000 (Max Savings)</option>
           </select>
         </div>
 
-        <button id="pay-btn" type="button" class="btn btn-primary">Proceed to Payment</button>
+        <button type="submit" class="btn" id="submitBtn">Place My Order Now</button>
 
-        <div id="account-box" class="account-box">
-          <div class="account-row"><span>Bank Name:</span><strong>GTBank (Guaranty Trust Bank)</strong></div>
-          <div class="account-row"><span>Account Number:</span><strong id="acct-num">0150581423</strong></div>
-          <div class="account-row"><span>Account Name:</span><strong>Pure Fitness</strong></div>
-          <div class="account-row"><span>Amount to Transfer:</span><strong id="amount-due">₦18,500</strong></div>
-          <button id="copy-btn" type="button" class="btn btn-secondary">Copy Account Number</button>
-
-          <div id="confirm-box" class="confirm-box">
-            <p class="note" style="margin-top:0; margin-bottom:10px;">
-              Once you have completed the transfer, tap below to send your order & payment confirmation:
-            </p>
-            <button id="sent-btn" type="button" class="btn btn-primary">I Have Sent Payment — Send Confirmation</button>
-            <p class="note" id="status-msg"></p>
-          </div>
+        <div class="delivery-notice">
+          <strong>Important Delivery Notice:</strong> Please make sure you (or someone on your behalf) are available within <strong>2–3 days</strong> after ordering to receive your package.
         </div>
+      </form>
+
+      <!-- Instant Confirmation Message -->
+      <div class="success-box" id="successBox">
+        <h3>Order Received Successfully!</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 10px;">
+          Thank you! Your order for the <strong>Fat Reduction Pad (10 Pads/Pack) + FREE Skipping Rope</strong> has been submitted.
+        </p>
+        <p style="font-size: 0.9rem; color: var(--gold);">
+          Please keep your phone reachable and make sure you are available within <strong>2–3 days</strong> to receive your package with FREE delivery.
+        </p>
       </div>
-    </section>
+    </div>
   </div>
 
+  <!-- Floating WhatsApp Icon for Extra Info Only -->
+  <a
+    href="https://wa.me/2348103157383?text=Hello%20Pure%20Fitness%2C%20I%20would%20like%20some%20extra%20information%20about%20the%20Fat%20Reduction%20Pad."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Chat on WhatsApp for extra info"
+  >
+    <svg viewBox="0 0 32 32">
+      <path d="M16.004 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.256.59 4.458 1.71 6.4L3.1 28.8l6.58-1.726a12.74 12.74 0 0 0 6.324 1.676h.006c7.058 0 12.796-5.74 12.796-12.8 0-3.42-1.332-6.636-3.75-9.054A12.716 12.716 0 0 0 16.004 3.2zm0 23.38h-.004a10.58 10.58 0 0 1-5.394-1.476l-.386-.23-3.904 1.024 1.042-3.806-.252-.4a10.56 10.56 0 0 1-1.622-5.642c0-5.844 4.756-10.6 10.604-10.6 2.832 0 5.494 1.104 7.496 3.106a10.533 10.533 0 0 1 3.102 7.498c0 5.846-4.756 10.6-10.682 10.6zm5.816-7.938c-.318-.16-1.886-.93-2.178-1.036-.292-.106-.504-.16-.716.16-.212.318-.822 1.036-1.008 1.248-.186.212-.372.24-.69.08-.318-.16-1.344-.496-2.56-1.58-.946-.844-1.586-1.886-1.772-2.204-.186-.318-.02-.49.14-.648.144-.142.318-.372.478-.558.16-.186.212-.318.318-.53.106-.212.054-.398-.026-.558-.08-.16-.716-1.726-.982-2.364-.258-.62-.52-.536-.716-.546l-.61-.01c-.212 0-.558.08-.85.398-.292.318-1.114 1.088-1.114 2.654s1.14 3.078 1.3 3.29c.16.212 2.244 3.426 5.436 4.804.76.328 1.352.524 1.814.67.762.242 1.456.208 2.004.126.612-.092 1.886-.77 2.152-1.514.266-.744.266-1.382.186-1.514-.08-.132-.292-.212-.61-.372z"/>
+    </svg>
+    <span>Need Extra Info?</span>
+  </a>
+
   <script>
-    (function () {
-      const UNIT_PRICE = 18500;
-      const WHATSAPP_NUMBER = "2348103157383";
-      const ORDER_EMAIL = "dentidirs@gmail.com";
+    // 1. Urgency Countdown Timer (Loops cleanly so visitors are never locked out)
+    let totalSeconds = (2 * 3600) + (45 * 60); // 2 hours 45 mins
 
-      const orderBtn = document.getElementById("order-now-btn");
-      const orderPanel = document.getElementById("order-panel");
-      const qtySelect = document.getElementById("qty");
-      const payBtn = document.getElementById("pay-btn");
-      const accountBox = document.getElementById("account-box");
-      const confirmBox = document.getElementById("confirm-box");
-      const copyBtn = document.getElementById("copy-btn");
-      const sentBtn = document.getElementById("sent-btn");
+    function updateCountdown() {
+      const hrs = Math.floor(totalSeconds / 3600);
+      const mins = Math.floor((totalSeconds % 3600) / 60);
+      const secs = totalSeconds % 60;
 
-      function formatNaira(amount) {
-        return "₦" + amount.toLocaleString("en-NG");
+      document.getElementById("hours").textContent = String(hrs).padStart(2, "0") + "h";
+      document.getElementById("minutes").textContent = String(mins).padStart(2, "0") + "m";
+      document.getElementById("seconds").textContent = String(secs).padStart(2, "0") + "s";
+
+      if (totalSeconds > 0) {
+        totalSeconds--;
+      } else {
+        totalSeconds = (2 * 3600) + (45 * 60); // Reset seamlessly
       }
+    }
 
-      function updateTotal() {
-        const qty = Number(qtySelect.value) || 1;
-        document.getElementById("amount-due").textContent = formatNaira(qty * UNIT_PRICE);
-      }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-      function revealOrderPanel() {
-        orderPanel.style.setProperty("display", "block", "important");
-        orderPanel.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+    // 2. Automatic Email Order Submission via FormSubmit
+    const orderForm = document.getElementById("orderForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const successBox = document.getElementById("successBox");
 
-      orderBtn.addEventListener("click", revealOrderPanel);
-      orderBtn.addEventListener("touchend", function (e) {
-        e.preventDefault();
-        revealOrderPanel();
-      }, { passive: false });
+    orderForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting Your Order...";
 
-      qtySelect.addEventListener("change", updateTotal);
+      const payload = {
+        _subject: "New Pure Fitness Order — Fat Reduction Pad",
+        _template: "table",
+        _captcha: "false",
+        Product: "Fat Reduction Pad (Slim Patch — 10 Pads/Pack) + FREE Skipping Rope",
+        Delivery_Fee: "FREE Delivery",
+        Customer_Name: document.getElementById("customerName").value.trim(),
+        Customer_Phone: document.getElementById("customerPhone").value.trim(),
+        Alternative_Phone: document.getElementById("altPhone").value.trim() || "None provided",
+        Delivery_Address: document.getElementById("deliveryAddress").value.trim(),
+        Selected_Package: document.getElementById("packageSelect").value,
+        Delivery_Window_Note: "Customer reminded to be available within 2-3 days"
+      };
 
-      function sendOrderEmail(stageLabel) {
-        const name = document.getElementById("customer-name").value.trim();
-        const phone = document.getElementById("customer-phone").value.trim();
-        const address = document.getElementById("customer-address").value.trim();
-        const qty = Number(qtySelect.value) || 1;
-        const total = formatNaira(qty * UNIT_PRICE);
-
-        fetch("https://formsubmit.co/ajax/" + ORDER_EMAIL, {
+      try {
+        await fetch("https://formsubmit.co/ajax/497a2b1c6247454a94839e9aee540374", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
           },
-          body: JSON.stringify({
-            _subject: "Pure Fitness Client Order (" + stageLabel + ") - " + name,
-            Customer_Name: name,
-            Customer_Phone: phone,
-            Delivery_Address: address,
-            Product: "Pure Fitness Recovery & Electrolytes Formula",
-            Quantity: qty,
-            Total_Amount: total,
-            Stage: stageLabel
-          })
-        }).catch(function () {
-          // Keep checkout flowing even if background request encounters a network issue
+          body: JSON.stringify(payload)
         });
+      } catch (err) {
+        console.error("Submission error:", err);
       }
 
-      payBtn.addEventListener("click", function () {
-        const name = document.getElementById("customer-name").value.trim();
-        const phone = document.getElementById("customer-phone").value.trim();
-        const address = document.getElementById("customer-address").value.trim();
-
-        if (!name || !phone || !address) {
-          alert("Please fill in your name, phone number, and delivery address first.");
-          return;
-        }
-
-        updateTotal();
-        sendOrderEmail("Proceeded to Payment");
-        accountBox.style.setProperty("display", "block", "important");
-        confirmBox.style.setProperty("display", "block", "important");
-        accountBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      });
-
-      copyBtn.addEventListener("click", function () {
-        const acct = document.getElementById("acct-num").textContent;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(acct).then(function () {
-            alert("Account number copied: " + acct);
-          }).catch(function () {
-            alert("Account number: " + acct);
-          });
-        } else {
-          alert("Account number: " + acct);
-        }
-      });
-
-      sentBtn.addEventListener("click", function () {
-        const name = document.getElementById("customer-name").value.trim();
-        const phone = document.getElementById("customer-phone").value.trim();
-        const address = document.getElementById("customer-address").value.trim();
-        const qty = Number(qtySelect.value) || 1;
-        const total = formatNaira(qty * UNIT_PRICE);
-
-        sendOrderEmail("Payment Sent");
-
-        const message =
-          "Hello Pure Fitness, I have made payment for my order:\n" +
-          "• Product: Pure Fitness Recovery & Electrolytes Formula (x" + qty + ")\n" +
-          "• Total Paid: " + total + "\n" +
-          "• Name: " + name + "\n" +
-          "• Phone: " + phone + "\n" +
-          "• Delivery Address: " + address;
-
-        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
-        document.getElementById("status-msg").textContent =
-          "Client info sent to dentidirs@gmail.com and opening WhatsApp. Please attach your transfer receipt if needed.";
-        window.location.href = url;
-      });
-    })();
+      orderForm.style.display = "none";
+      successBox.style.display = "block";
+      successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
   </script>
 </body>
 </html>
